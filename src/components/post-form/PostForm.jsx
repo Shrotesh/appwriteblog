@@ -58,7 +58,7 @@ function PostForm({post}) {
       return value
       .trim()
       .toLowerCase()
-      .replace(/^[a-zA-Z\d\s]+/g, '-')
+      .replace(/[^a-zA-Z\d\s]+/g, '-')
       .replace(/\s/g, '-')
     
       return ''
@@ -67,9 +67,9 @@ function PostForm({post}) {
   React.useEffect(() => {
     const subscription = watch((value,{name}) =>{
       if(name === 'title'){
-        setValue('slug', slugTransform(value.title),
-          {shouldValidate: true}
-        )
+        setValue('slug', slugTransform(value.title, 
+          {shouldValidate: true})
+        );
       }
     })
 
