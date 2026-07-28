@@ -12,6 +12,7 @@ import AllPosts from './pages/AllPosts.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
 import Signup from './pages/Signup.jsx'
+import Profile from './pages/Profile.jsx'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
@@ -74,6 +75,15 @@ const router = createBrowserRouter([
             path: "/post/:slug",
             element: <Post />,
         },
+        {
+            path:"/profile",
+            element: (
+                <AuthLayout authentication>
+                    {" "}
+                    <Profile />
+                </AuthLayout>
+            ),
+        }
     ],
 },
 ])

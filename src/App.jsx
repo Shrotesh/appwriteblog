@@ -10,6 +10,7 @@ import  {Outlet} from 'react-router-dom'
 function App() {
 
   const [loading, setLoading] = useState(true)
+
   const dispatch = useDispatch()
    
   useEffect(()=>{
@@ -19,6 +20,7 @@ function App() {
         dispatch(login({userData}))
       } else {
         dispatch(logout())
+
       }
       
     })
@@ -32,10 +34,7 @@ function App() {
         <main>
           <Outlet/>
         </main>
-        <Footer/>
-
-
-        
+          <Footer/>
       </div>
     </div>
   ) : null

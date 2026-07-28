@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Logo, LogoutBtn  } from '../index'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 function Header() {
@@ -34,6 +34,11 @@ function Header() {
         slug: "/add-post",
         active: authStatus,
     },
+    {
+        name: "Profile",
+        slug: "/profile",
+        active: authStatus,
+    }
   ]
   return (
     <header className='py-3 shadow bg-gray-500'>
@@ -46,7 +51,7 @@ function Header() {
           </div>
     
           <ul className='flex ml-auto'>
-            {navItems.map((item) => 
+            {/* {navItems.map((item) => 
             item.active ? (
               <li key={item.name}>
                 <button 
@@ -55,6 +60,25 @@ function Header() {
                 >{item.name}</button>
               </li>
             ) : null
+            )} */}
+
+            {navItems.map((item) =>
+                item.active ? (
+                    <li key={item.name}>
+                        <NavLink
+                            to={item.slug}
+                            className={({ isActive }) =>
+                                `inline-block px-6 py-2 duration-200 rounded-full ${
+                                    isActive
+                                        ? "bg-blue-400 text-black"
+                                        : "hover:bg-blue-100"
+                                }`
+                            }
+                        >
+                            {item.name}
+                        </NavLink>
+                    </li>
+                ) : null
             )}
             {authStatus && (
               <li>
